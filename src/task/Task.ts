@@ -1,6 +1,6 @@
 /* Task class Definition in TS */ 
 export class Task {
-    id: number | undefined;
+    id: number = 0;
     name: string = '';
     isActive: boolean = false;
     get isNew(): boolean {

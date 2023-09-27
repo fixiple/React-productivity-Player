@@ -9,5 +9,5 @@ export const MOCK_TASKS = [
   new Task({
     id: 2,
     name: 'Wisozk Group',
-    isActive: true,
+    isActive: false,
 })]

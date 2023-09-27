@@ -1,23 +1,34 @@
 import { Task } from "./Task";
+import Checkbox from "../components/checkbox";
+import { SetStateAction, useState } from "react";
 
 
 function TaskList(data: Array<Task>) {
-    
-    function onChange() {
-        return null
+    const [selected, setSelected] = useState();
+
+    const handleChange = (val: number) => {
+        setSelected((prev: SetStateAction<any>) => {
+            (val===prev ? null : val)
+        });
     }
-    const listData = Object.values(data).map((element) => 
-    <li key={element.id} className="task"> 
-        <input type="checkbox" value={element.name} checked={element.isActive}/>
-        <label htmlFor={element.name}>{element.name}</label>
-    </li>)
+
     
+    const listData = Object.values(data).map((element) => {
+
+    return <li key={element.id} className="task"> 
+        <Checkbox 
+        id={element.name}
+        label={element.name}
+        checked={element.id===selected}
+        onChange={() => handleChange(element.id)}
+        ></Checkbox>
+    </li>})
     return (
-        <div style={{ }}>
+        <>
             <ul style = {{ listStyleType : 'none'}}>
                     {listData}
             </ul>
-        </div>
+        </>
     )
 }
 
