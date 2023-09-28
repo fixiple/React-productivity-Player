@@ -9,10 +9,10 @@ function TasksPage() {
         <>
             <h1>Tasks</h1>
             <div id="tasks-list">
-                <TaskList {...data}></TaskList>
+                <TaskList tasklist={data}></TaskList>
             </div>
             <div id="new-task-container">
-                <NewTask></NewTask>
+                <NewTask currentList={data}></NewTask>
             </div>
         </>
     )

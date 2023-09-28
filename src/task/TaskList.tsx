@@ -2,8 +2,15 @@ import { Task } from "./Task";
 import Checkbox from "../components/checkbox";
 import { SetStateAction, useState } from "react";
 
+interface propsType {
+    tasklist: Array<Task>
+}
 
-function TaskList(data: Array<Task>) {
+//TODO: REFACTOR INTO ONLY USING THIS FILE TO GET THE CURRENT LIST, NOT ALSO RENDERING THE VIEW
+
+function TaskList(props: propsType) {
+    const list = props.tasklist;
+    
     const [selected, setSelected] = useState();
 
     const handleChange = (val: number) => {
@@ -13,8 +20,7 @@ function TaskList(data: Array<Task>) {
     }
 
     
-    const listData = Object.values(data).map((element) => {
-
+    const listData = Object.values(list).map((element) => {
     return <li key={element.id} className="task"> 
         <Checkbox 
         id={element.name}
