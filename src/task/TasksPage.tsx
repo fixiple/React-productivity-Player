@@ -1,5 +1,5 @@
 import { MOCK_TASKS } from './mockTasks';
-import { ChangeEvent, ChangeEventHandler, SyntheticEvent, useRef, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useRef, useState } from 'react';
 import { Task } from './Task';
 
 
@@ -41,7 +41,7 @@ function TasksPage() {
     
     
     
-    const handleChange = (e : React.ChangeEvent<HTMLInputElement>): void  => {
+    const handleChange = (e : ChangeEvent<HTMLInputElement>): void  => {
         //console.log(e.currentTarget.value);
         var title: string = e.currentTarget.value.trim();
         if(e.currentTarget.value.trim().length>2){
