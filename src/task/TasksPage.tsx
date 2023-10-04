@@ -47,9 +47,10 @@ function TasksPage() {
         if(e.currentTarget.value.trim().length>2){
             //console.log("input is not empty");
             setTaskName(title);
-        } else {
-            console.log("input is empty")
-        }
+        } 
+        //else {
+        //     console.log("input is empty")
+        // }
     }
 
 
