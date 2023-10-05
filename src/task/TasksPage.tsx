@@ -1,8 +1,10 @@
-import { MOCK_TASKS } from './mockTasks';
-import { ChangeEvent, SyntheticEvent, useRef, useState } from 'react';
+import { addingTaskToTasks, getTasks} from './mockTasks';
+import { ChangeEvent, useRef, useState } from 'react';
 import { Task } from './Task';
 
 
+
+console.log(getTasks)
 
 function dataIteration(list: Array<Task>){
     const inputRef = useRef<any>([]);
@@ -21,12 +23,12 @@ function dataIteration(list: Array<Task>){
 }
 
 function TasksPage() {
-    const [list, setList] = useState(MOCK_TASKS)
-
+    var tasks : Array<Task> = getTasks();
     const [taskName, setTaskName] = useState("")
-    var [taskID, setTaskID] = useState(list[list.length - 1].id+1 || 0);
+    var [taskID, setTaskID] = useState(0);
 
-    function handleSubmit(event: SyntheticEvent){
+    // event = SyntheticEvent
+    function handleSubmit(){
 
         const task: Task = new Task(
             {
@@ -35,8 +37,9 @@ function TasksPage() {
                 isActive: false
             }
         );
-        setTaskID(() => taskID+1)
-        setList([...list, task])
+        setTaskID(() => tasks[tasks.length - 1].id+1 || taskID+1)
+
+        addingTaskToTasks(task);
     }
     
     
@@ -59,7 +62,7 @@ function TasksPage() {
             <h1>Tasks</h1>
             <div id="tasks-list">
                 <ul style = {{ listStyleType : 'none'}}>
-                    {dataIteration(list)}
+                    {dataIteration(tasks)}
                 </ul>
             </div>
             <div id="new-task-container">
