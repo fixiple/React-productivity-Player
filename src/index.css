@@ -9,9 +9,21 @@
 
 }
 
-.task{
+li.task{
     color: rgba(255, 255, 255, 0.87);
 }
+
+li.task:hover  {
+    color: rgb(255, 0, 0);
+}
+
+
+.done{
+    color: rgb(121, 121, 121);
+    text-decoration: line-through;
+}
+
+
 
 @media (prefers-color-scheme: light) {
     :root {

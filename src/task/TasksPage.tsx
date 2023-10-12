@@ -1,21 +1,14 @@
-import { addingTaskToTasks, getTasks, initLocalTasks, deleteTasks, modifyTask} from './mockTasks';
-import { ChangeEvent, useRef, useState } from 'react';
+import { addingTaskToTasks, getTasks, deleteTasks, modifyTask} from './mockTasks';
+import { ChangeEvent, useState } from 'react';
 import { Task } from './Task';
-
-
-
+import { Checkbox } from '../components/Checkbox';
 
 
 function dataIteration(list: Array<Task>){
-    const inputRef = useRef<any>([]);
     const listData = Object.values(list);
     const listDataIteration = listData.map((task) => 
         <li key={task.id} className="task"> 
-            <input 
-                id={task.name}
-                type="checkbox"
-                ref={inputRef.current[task.id]}
-            /> <label htmlFor={task.name}>{task.name}</label>
+            <Checkbox id={task.name} label={task.name}></Checkbox>
         </li>
     )
 
@@ -24,13 +17,12 @@ function dataIteration(list: Array<Task>){
 
 function TasksPage() {
     //deleteTasks();
-    //initLocalTasks();
 
     var tasks : Array<Task> = getTasks();
-
     //console.log(...tasks);
     const [taskName, setTaskName] = useState("")
     var [taskID, setTaskID] = useState(tasks.length + 1||0);
+
 
     // event = SyntheticEvent
     function handleSubmit(){
@@ -72,16 +64,16 @@ function TasksPage() {
     return (
         <>
             <h1>Tasks</h1>
-            <div id="tasks-list">
-                <ul style = {{ listStyleType : 'none'}}>
-                    {dataIteration(tasks)}
-                </ul>
-            </div>
             <div id="new-task-container">
                 <label htmlFor="task">task:</label> 
                 <input type="text" onChange={handleChange}  id="task"/>
                 <input type="Button" defaultValue="Add Todo" onClick={handleSubmit}/>
                 <input type="Button" defaultValue="modify" onClick={modify}/>
+            </div>
+            <div id="tasks-list">
+                <ul style = {{ listStyleType : 'none'}}>
+                    {dataIteration(tasks)}
+                </ul>
             </div>
         </>
     )

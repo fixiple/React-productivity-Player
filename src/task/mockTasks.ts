@@ -12,7 +12,7 @@ export const MOCK_TASKS = [
     isActive: false,
 })]
 
-export function initLocalTasks() : void{
+function initLocalTasks() : void{
     if (!localStorage.getItem("taskList")){
         localStorage.setItem(
             "taskList", 
@@ -24,7 +24,7 @@ export function initLocalTasks() : void{
 
 
 export function getTasks(): Array<Task>{
-
+    initLocalTasks()
     const tasksLocal: Array<Task> = JSON.parse(localStorage.getItem("taskList")!);
     return tasksLocal
 }

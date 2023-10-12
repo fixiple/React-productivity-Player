@@ -16,6 +16,7 @@ In the version 1 app:
     - [ ] setting up the title/task
 
 - tasklist implementation
-    - [ ] getting the task
-    - [ ] adding new tasks to a list
+    - [x] getting the task
+    - [x] adding new tasks to a list
+    - [ ] find a way to crossThrough the checked item (className .done in CSS, how to add it??)
     - [ ] crossing tasks already done
