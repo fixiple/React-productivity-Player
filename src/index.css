@@ -1,0 +1,41 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+}
+
+li.task{
+    color: rgba(255, 255, 255, 0.87);
+}
+
+li.task:hover  {
+    color: rgb(255, 0, 0);
+}
+
+
+li.task.done{
+    color: rgb(121, 121, 121);
+    text-decoration: line-through;
+}
+
+
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+
+    a:hover {
+        color: #747bff;
+    }
+
+    button {
+        background-color: #f9f9f9;
+    }
+}
