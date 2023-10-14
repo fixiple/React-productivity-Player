@@ -1,15 +1,25 @@
 import { addingTaskToTasks, getTasks, deleteTasks, modifyTask} from './mockTasks';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect } from 'react';
 import { Task } from './Task';
 import { Checkbox } from '../components/Checkbox';
 
 
 function dataIteration(list: Array<Task>){
+
+    const [checked, setChecked] = useState(false);
+
+    const handleChange = (e : ChangeEvent<HTMLInputElement>) =>{
+        setChecked(e.currentTarget.checked);
+    }
+
     const listData = Object.values(list);
-    const listDataIteration = listData.map((task) => 
-        <li key={task.id} className="task"> 
-            <Checkbox id={task.name} label={task.name}></Checkbox>
-        </li>
+    const listDataIteration = listData.map((task) => {
+        return(
+            <li key={task.id} className={checked ? "task done" : "task"}> 
+                <Checkbox id={task.name} label={task.name} checked={task.isActive} onChange={()=>handleChange}></Checkbox>
+            </li>
+        )
+        }
     )
 
     return listDataIteration;
@@ -19,6 +29,13 @@ function TasksPage() {
     //deleteTasks();
 
     var tasks : Array<Task> = getTasks();
+
+    useEffect(() => {
+        // This effect uses the `value` variable,
+        // so it "depends on" `value`.
+        tasks = getTasks();
+    }, [tasks])
+
     //console.log(...tasks);
     const [taskName, setTaskName] = useState("")
     var [taskID, setTaskID] = useState(tasks.length + 1||0);
@@ -43,7 +60,7 @@ function TasksPage() {
 
     //TODO: Modification works but not update, Update doesn't update the local tasks shown in the view/front.....
     function modify(){
-        modifyTask(6,"OH NO I ORIN Again!", true);
+        modifyTask(10,"OH NO I ORIN Again!", true);
         tasks=JSON.parse(localStorage.getItem("taskList")!);
     }
     

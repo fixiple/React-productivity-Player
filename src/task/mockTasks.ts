@@ -9,7 +9,7 @@ export const MOCK_TASKS = [
   new Task({
     id: 2,
     name: 'Wisozk Group',
-    isActive: false,
+    isActive: true,
 })]
 
 function initLocalTasks() : void{

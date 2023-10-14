@@ -18,7 +18,7 @@ li.task:hover  {
 }
 
 
-.done{
+li.task.done{
     color: rgb(121, 121, 121);
     text-decoration: line-through;
 }

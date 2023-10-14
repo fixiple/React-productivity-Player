@@ -5,18 +5,12 @@ import { ChangeEvent, ChangeEventHandler, FunctionComponent, useState } from "re
 type checkBoxProps = {
     id: string, 
     label: string,  
-    onChange?: ChangeEventHandler
+    checked? : boolean,
+    onChange?: ChangeEventHandler,
 }
 
 
-export const Checkbox: FunctionComponent<checkBoxProps> = ({id, label}) => {
-    const [checked, setChecked] = useState(false);
-    const handleChange = (e : ChangeEvent<HTMLInputElement>) =>{
-        setChecked(() => e.target.checked );
-        //console.log(e.target.nextSibling?.textContent)
-        
-    }
-
+export const Checkbox: FunctionComponent<checkBoxProps> = ({id, label, checked, onChange}) => {
     return (
         <div>
             <label>
@@ -24,7 +18,8 @@ export const Checkbox: FunctionComponent<checkBoxProps> = ({id, label}) => {
                     id={id}
                     type="checkbox"
                     checked={checked}
-                    onChange={handleChange} />
+                    onChange={onChange} 
+                    />
                 <label htmlFor={id}>{label}</label>
             </label>
         </div>
